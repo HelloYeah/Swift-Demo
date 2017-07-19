@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kB6-oQ-QMJ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AppIcon" translatesAutoresizingMaskIntoConstraints="NO" id="YDx-oV-ZxR">
+                                        <rect key="frame" x="140.5" y="195.5" width="94" height="94"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YDx-oV-ZxR" secondAttribute="height" multiplier="1:1" id="s5M-Am-sxh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Branding" translatesAutoresizingMaskIntoConstraints="NO" id="pcs-fu-fXj">
+                                        <rect key="frame" x="114.5" y="563" width="146" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="SAw-6y-A9U"/>
+                                            <constraint firstAttribute="width" constant="146" id="olj-jo-n17"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="pcs-fu-fXj" secondAttribute="bottom" constant="44" id="1Yq-pG-zll"/>
+                                    <constraint firstItem="YDx-oV-ZxR" firstAttribute="centerY" secondItem="kB6-oQ-QMJ" secondAttribute="centerY" multiplier="0.75" id="VJJ-Tc-XJO"/>
+                                    <constraint firstItem="pcs-fu-fXj" firstAttribute="centerX" secondItem="kB6-oQ-QMJ" secondAttribute="centerX" id="h0T-By-GXf"/>
+                                    <constraint firstItem="YDx-oV-ZxR" firstAttribute="width" secondItem="kB6-oQ-QMJ" secondAttribute="width" multiplier="0.25" id="jqP-hl-kyc"/>
+                                    <constraint firstItem="YDx-oV-ZxR" firstAttribute="centerX" secondItem="kB6-oQ-QMJ" secondAttribute="centerX" id="vBW-wU-gdc"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="kB6-oQ-QMJ" secondAttribute="bottom" id="HyC-tF-icl"/>
+                            <constraint firstItem="kB6-oQ-QMJ" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="MRC-pv-S8h"/>
+                            <constraint firstAttribute="trailing" secondItem="kB6-oQ-QMJ" secondAttribute="trailing" id="UYf-tP-Dls"/>
+                            <constraint firstItem="kB6-oQ-QMJ" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="k60-MG-tY3"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AppIcon" width="96" height="96"/>
+        <image name="Branding" width="146" height="40"/>
+    </resources>
+</document>
