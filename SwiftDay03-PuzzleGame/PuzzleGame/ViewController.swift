@@ -8,31 +8,51 @@
 
 import UIKit
 
+let ScreenW = UIScreen.main.bounds.width
+let ScreenH = UIScreen.main.bounds.height
+var count = 3
+
+struct EmptyPosition {
+    var  col : NSInteger
+    var  row : NSInteger
+}
+
 class ViewController: UIViewController {
 
-    var container : UIView!
-    let emptyPuzzle : Puzzle = Puzzle.init(image: UIImage.init(), withCol: 2, withRow: 2)
-    let width = UIScreen.main.bounds.width/3.0
-    let height = UIScreen.main.bounds.width/3.0
+    @IBOutlet weak var container: UIView!
+    @IBOutlet weak var stepNumber: UILabel!
+    
+    var stepCount = 0
+    
+    private var emptyPosition : EmptyPosition = EmptyPosition.init(col: count - 1, row: count - 1) //空白Puzzle的位置
+    private let width = ScreenW / 3.0
+    private let height = ScreenW / 3.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        container = UIView.init(frame:CGRect(x: 0, y:50, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width))
-        container.backgroundColor = UIColor.lightGray
-        self.view.addSubview(container)
-        
         let orginImage = UIImage.init(named: "1")
+        let imageArray = NSMutableArray.init()
         
-        for i in 0..<8{
-            
-            let col = i % 3
-            let row = i / 3
+        for i in 0..<(count * count - 1) {
+            let col = i % count
+            let row = i / count
             let rect = CGRect(x: CGFloat(col) * width, y:CGFloat(row) * height, width: width, height: height)
             let image = self.clipImageInRect(rect: rect, orginImage: orginImage!)
-          
-            let puzzle = Puzzle.init(image: image, withCol: col , withRow: row)
+            imageArray.add(image)
+        }
+        
+        for i in 0..<(count * count - 1) {
             
+            let col = i % count
+            let row = i / count
+            
+            let randIndex = Int(arc4random()) % (imageArray.count)
+            let image:UIImage = imageArray.object(at: randIndex) as! UIImage
+            imageArray.remove(image)
+            
+            let rect = CGRect(x: CGFloat(col) * width, y:CGFloat(row) * height, width: width, height: height)
+            let puzzle = Puzzle.init(image: image, withCol: col , withRow: row)
             let puzzleView = PuzzleView.init(frame: rect)
             puzzleView.puzzle = puzzle
             puzzleView.backgroundColor = UIColor.red
@@ -42,38 +62,51 @@ class ViewController: UIViewController {
         }
     }
     
+    //点击图片，进行移动
     func click(tap: UITapGestureRecognizer) {
+        
         let puzzleView = tap.view as! PuzzleView
         let puzzle = puzzleView.puzzle!
         
         let col = puzzle.col
         let row = puzzle.row
         
-        if col == emptyPuzzle.col  {
-            if row! - emptyPuzzle.row == 1 {
+        if col == emptyPosition.col  {
+           
+            if row! - emptyPosition.row == 1 {
                 puzzle.move(direction: .DirectionUp)
                 puzzleView.frame.origin.y -= height
-                emptyPuzzle.move(direction: .DirectionDown)
+                emptyPosition.row += 1
+                stepCount += 1
             }
-            if row! - emptyPuzzle.row == -1 {
+            if row! - emptyPosition.row == -1 {
+               
                 puzzle.move(direction: .DirectionDown)
                 puzzleView.frame.origin.y += height
-                emptyPuzzle.move(direction: .DirectionUp)
+                emptyPosition.row -= 1
+                stepCount += 1
             }
         }
         
-        if row == emptyPuzzle.row  {
-            if col! - emptyPuzzle.col == 1 {
+        if row == emptyPosition.row  {
+            
+            if col! - emptyPosition.col == 1 {
+                
                 puzzle.move(direction: .DirectionLeft)
                 puzzleView.frame.origin.x -= width
-                emptyPuzzle.move(direction: .DirectionRight)
+                emptyPosition.col += 1
+                stepCount += 1
             }
-            if col! - emptyPuzzle.col == -1 {
+            if col! - emptyPosition.col == -1 {
+                
                 puzzle.move(direction: .DirectionRight)
                 puzzleView.frame.origin.x += width
-                emptyPuzzle.move(direction: .DirectionLeft)
+                emptyPosition.col -= 1
+                stepCount += 1
             }
         }
+        
+        stepNumber.text = "\(stepCount)"
     }
     
     func clipImageInRect(rect: CGRect, orginImage: UIImage) -> UIImage{
