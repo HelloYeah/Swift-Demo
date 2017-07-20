@@ -13,8 +13,8 @@ let ScreenH = UIScreen.main.bounds.height
 
 class ViewController: UIViewController {
 
-    var scrollView = UIScrollView.init()
-    var bottomView = UIView.init()
+    lazy var scrollView = UIScrollView.init()
+    lazy var bottomView = UIView.init()
 
     override func viewDidLoad() {
         

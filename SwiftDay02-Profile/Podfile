@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SwiftDay02' do
+
+  use_frameworks!
+	
+ pod 'SnapKit', '~> 3.2.0'
+  # Pods for SwiftDay02
+
+  target 'SwiftDay02Tests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'SwiftDay02UITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
