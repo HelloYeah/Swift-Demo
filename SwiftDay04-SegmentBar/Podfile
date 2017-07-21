@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SegmentBar' do
+
+  use_frameworks!
+  pod 'SnapKit', '~> 3.2.0'
+
+  # Pods for SegmentBar
+
+  target 'SegmentBarTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'SegmentBarUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
